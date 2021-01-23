@@ -1,0 +1,10 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: account-service
+
+eureka:
+  instance:
+    intanceId: ${spring.application.name}:${server.port}
