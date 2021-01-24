@@ -1,6 +1,10 @@
 server:
-  port: 8000
-  
+  port: 8100
+
 spring:
   application:
     name: customer-service
+
+eureka:
+  client:
+    enabled: true
