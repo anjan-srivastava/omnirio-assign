@@ -23,26 +23,26 @@ Idea here to mostly demonstrate the understanding of following concepts:
 # Sample Requests
 - Login using username, password
 ```
-curl -v  -H "Content-Type: application/json" http://localhost:8100/api/public/login -d'{"username": "god", "password": "god"}'
+curl -v  -H "Content-Type: application/json" http://customer-service/api/public/login -d'{"username": "god", "password": "god"}'
 ```
 Note down the authorization header value.
 
 - Fetch current user details
 ```
-curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://localhost:8100/api/users/me
+curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://customer-service/api/users/me
 ```
 
 - List users (Requires Branch Manager access)
 ```
-curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://localhost:8100/api/users
+curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://customer-service/api/users
 ```
 
 - List Accounts (Requires Branch Manager access)
 ```
-curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://localhost:8001/api/accounts/
+curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://account-service/api/accounts/
 ```
 
 - Fetch my account
 ```
-curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://localhost:8001/api/accounts/my
+curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://account-service/api/accounts/my
 ```
