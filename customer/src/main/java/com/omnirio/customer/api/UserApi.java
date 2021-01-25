@@ -17,6 +17,7 @@ public class UserApi {
     
     @GetMapping("me")
     public User me() {
+        System.err.println("Endpoint '/me' called.");
         return (User) SecurityContextHolder
             .getContext()
             .getAuthentication()

@@ -1,7 +1,7 @@
 package com.omnirio.customer.config.security;
 
 import com.omnirio.customer.config.security.JwtTokenUtil;
-import com.omnirio.customer.domain.models.User;
+import com.omnirio.customer.service.UserService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -25,6 +25,9 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     protected void doFilterInternal(
         HttpServletRequest request, 
@@ -44,7 +47,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             return;
         }
 
-        UserDetails userDetails = new User(); // TODO load from repo
+        UserDetails userDetails = userService.findByUsername(jwtTokenUtil.getUsername(token));
 
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
             userDetails, null,

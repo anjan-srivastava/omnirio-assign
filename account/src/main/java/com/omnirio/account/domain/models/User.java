@@ -1,7 +1,11 @@
 package com.omnirio.account.domain.models;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class User implements UserDetails {
@@ -13,6 +17,8 @@ public class User implements UserDetails {
     
     private Date dateOfBirth;
     private char gender; // 'M' or 'F'
+
+    private List<Map<String, String>> authorities;
 
     public String getId() {
         return userId;
@@ -27,8 +33,10 @@ public class User implements UserDetails {
     }
 
     @Override
-    public Collection<? extends org.springframework.security.core.GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities.stream()
+            .map(a -> new SimpleGrantedAuthority(a.get("authority")))
+            .collect(Collectors.toList());
     }
 
     @Override

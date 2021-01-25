@@ -1,6 +1,7 @@
 package com.omnirio.account.config.security;
 
 import com.omnirio.account.client.UserApiClient;
+import com.omnirio.account.domain.models.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -30,7 +31,7 @@ public class AuthFilter extends OncePerRequestFilter {
         
             final String auth = request.getHeader(HttpHeaders.AUTHORIZATION);
             try {
-                UserDetails userDetails = userApi.me(auth);
+                User userDetails = userApi.me(auth);
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                     userDetails, null,
                     Optional.ofNullable(userDetails).map(UserDetails::getAuthorities).orElse(new ArrayList<>())

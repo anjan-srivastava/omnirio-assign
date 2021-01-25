@@ -5,6 +5,18 @@ public class Role {
     private String roleName;
     private String roleCode;
 
+    public Role() { }
+
+    public Role(
+        String roleId,
+        String roleName,
+        String roleCode) {
+        
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.roleCode = roleCode;
+    }
+
     public String getRoleId() {
         return roleId;
     }
@@ -13,7 +25,7 @@ public class Role {
         return roleName;
     }
 
-    public String roleCode() {
+    public String getRoleCode() {
         return roleCode;
     }
 }
