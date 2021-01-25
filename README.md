@@ -16,10 +16,9 @@ Idea here to mostly demonstrate the understanding of following concepts:
 - start all services including `registry`
 - for running multiple instances of a service use `mvn spring-boot:run -Dspring-boot.run.arguments=--server.port={PORT}`
 
-**Note: There are only two users in the system 
+## Note: There are only two users in the system 
 1. username: god, password: god (Branch Manager)
 2. username: dog, password: dog (Customer)
-**
 
 # Sample Requests
 - Login using username, password
@@ -33,13 +32,12 @@ Note down the authorization header value.
 curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://localhost:8100/api/users/me
 ```
 
-- List users
+- List users (Requires Branch Manager access)
 ```
 curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://localhost:8100/api/users
 ```
-__Requires BRANCH_MANAGER access__
 
-- List Account
+- List Accounts (Requires Branch Manager access)
 ```
 curl -v -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Content-Type: application/json" http://localhost:8001/api/accounts/
 ```

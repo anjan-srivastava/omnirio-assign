@@ -27,14 +27,14 @@ public class UserApi {
             .getPrincipal();
     }
     
-    @GetMapping("/")
-    @Secured({ "BRANCH_MANAGER" })
+    @GetMapping
+    @Secured({ "ROLE_BRANCH_MANAGER" })
     public List<User> listUsers() throws Exception {
         return userService.listUsers();   
     }
 
     @PutMapping("/{userId}")
-    @Secured( { "BRANCH_MANAGER" } )
+    @Secured( { "ROLE_BRANCH_MANAGER" } )
     public void modifyUser(@PathVariable String userId) {
         
     }

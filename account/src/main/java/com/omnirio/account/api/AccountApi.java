@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping( path = "api/accounts")
 public class AccountApi {
 
-    @GetMapping("/")
-    @Secured( { "BRANCH_MANAGER" } )
+    @GetMapping
+    @Secured( { "ROLE_BRANCH_MANAGER" } )
     public List<Account> listAccounts() {
         return Collections.emptyList();
     }
