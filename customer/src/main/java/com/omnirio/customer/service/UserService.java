@@ -27,7 +27,7 @@ public class UserService {
         return users.get(userName);
     }
 
-    private List<User> listUsers() throws Exception {
+    public List<User> listUsers() throws Exception {
         List<User> users = new ArrayList<>();
         
         User branchManager = new User(

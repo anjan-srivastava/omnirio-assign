@@ -1,8 +1,9 @@
 package com.omnirio.customer.api;
 
 import com.omnirio.customer.domain.models.User;
-import java.util.Collections;
+import com.omnirio.customer.service.UserService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping( path = "api/users")
 public class UserApi {
+    @Autowired
+    private UserService userService;
     
     @GetMapping("me")
     public User me() {
@@ -26,8 +29,8 @@ public class UserApi {
     
     @GetMapping("/")
     @Secured({ "BRANCH_MANAGER" })
-    public List<User> listUsers() {
-        return Collections.singletonList(new User());    
+    public List<User> listUsers() throws Exception {
+        return userService.listUsers();   
     }
 
     @PutMapping("/{userId}")
